@@ -1,0 +1,46 @@
+server:
+  context-path: /eas
+  tomcat:
+    max-threads: 50
+    max-connections: 300
+  ##启动端口
+  port: 8088
+spring:
+  resources:
+    ## 直接访问静态资源
+    static-locations: classpath:/static/, classpath:/public/
+  http:
+    multipart:
+      max-file-size: 30Mb
+      max-request-size: 30Mb
+  jackson:
+    serialization:
+      indent-output: true
+  profiles:
+    active:
+    ##配置采用哪个后缀的配置文件
+    - dev
+###jpa
+  
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    tomcat:
+      initial-size: 10 #初始连接池数量
+      max-active: 19 #是最大激活连接数
+      min-idle: 19 #最大空闲数
+      max-wait: 60000 #超时时间
+      test-while-idle: true
+      validation-query: select 1
+      default-auto-commit: false
+      
+      
+##mybatis扫描文件
+mybatis:
+  mapper-locations:
+  - classpath:mapper/**/*.xml
+
+pagehelper: 
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql 

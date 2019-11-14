@@ -1,0 +1,15 @@
+##生产配置Linux
+spring:
+  datasource:
+    ##数据库连接配置
+    url: jdbc:mysql://localhost:3306/dbName?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+
+
+logging:
+  ##日志文件存放位置
+  path:  E:/temp/eas/logs
+  ##显示对应包下的SQL执行语句
+  level:
+    com.ahzx.mapper: debug
